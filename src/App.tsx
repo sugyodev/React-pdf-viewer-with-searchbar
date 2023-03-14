@@ -5,7 +5,7 @@ import SearchReasultView from "./pages/SearchReasultView";
 function App() {
   return (
     <div className="App" style={{height:"98vh"}}>
-      <SearchReasultView fileUrl="/pdfs/ssd.pdf" />
+      <SearchReasultView fileUrl="/pdfs/john.pdf" />
     </div>
   );
 }
