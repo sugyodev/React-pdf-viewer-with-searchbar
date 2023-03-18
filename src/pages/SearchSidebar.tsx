@@ -72,9 +72,10 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({ searchPluginInstance }) =
                         }}
                     >
                         <div style={{ padding: '.5rem' }}>
-                            <div style={{ position: 'relative' }}>
+                            <div style={{ position: 'relative', direction:'rtl' }}>
+                                {/* <p style={{margin:6, textAlign:'left', color:'#555', fontWeight:500}}>Search Bar</p> */}
                                 <TextBox
-                                    placeholder="Enter to search"
+                                    placeholder="أدخل للبحث"
                                     value={keyword}
                                     onChange={setKeyword}
                                     onKeyDown={handleSearchKeyDown}
@@ -86,7 +87,7 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({ searchPluginInstance }) =
                                             display: 'flex',
                                             bottom: 0,
                                             position: 'absolute',
-                                            right: '.5rem',
+                                            left: '.5rem',
                                             top: 0,
                                         }}
                                     >
@@ -97,7 +98,7 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({ searchPluginInstance }) =
                         </div>
                         {searchStatus === SearchStatus.FoundResults && (
                             <>
-                                {matches.length === 0 && 'Not found'}
+                                {matches.length === 0 && <span style={{color:'#888'}}>لم يتم العثور على نتيجة متطابقة</span>}
                                 {matches.length > 0 && (
                                     <>
                                         <div
@@ -162,6 +163,7 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({ searchPluginInstance }) =
                                                             cursor: 'pointer',
                                                             overflowWrap: 'break-word',
                                                             padding: '.5rem',
+                                                            direction:'rtl'
                                                         }}
                                                         onClick={() => jumpToMatch(index + 1)}
                                                     >

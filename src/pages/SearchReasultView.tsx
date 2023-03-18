@@ -13,7 +13,7 @@ interface SearchReasultViewProps {
 
 const SearchReasultView: React.FC<SearchReasultViewProps> = ({ fileUrl }) => {
     const searchPluginInstance = searchPlugin();
-
+    const fileName = fileUrl.split('/')[fileUrl.split('/').length - 1];
     return (
         <div
             style={{
@@ -32,11 +32,13 @@ const SearchReasultView: React.FC<SearchReasultViewProps> = ({ fileUrl }) => {
             >
                 <SearchSidebar searchPluginInstance={searchPluginInstance} />
             </div>
-
             <div style={{ flex: 1 }}>
-                <Worker workerUrl="/pdf.worker.min.js">
-                    <Viewer fileUrl={fileUrl} plugins={[searchPluginInstance]} />
-                </Worker>
+                <h2>{fileName}</h2>
+                <div style={{ width: '100%', height: '100%', borderTop: 'solid 1px #eee' }}>
+                    <Worker workerUrl="/pdf.worker.min.js" >
+                        <Viewer fileUrl={fileUrl} plugins={[searchPluginInstance]} />
+                    </Worker>
+                </div>
             </div>
         </div>
     );
